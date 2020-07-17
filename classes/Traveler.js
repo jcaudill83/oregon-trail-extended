@@ -23,15 +23,12 @@ class Doctor extends Traveler {
        super (name)
     }
 
-    heal () {
-        if (this.isHealthy = true) {
-            return this.isHealthy = false 
-        }
+    heal (traveler) {
+        traveler.isHealthy = true
     }
 
-    eat () {
-        this.food - 1
-    }
+
+    
 }
 
 class Hunter extends Traveler {
@@ -45,15 +42,19 @@ class Hunter extends Traveler {
         this.food += 5
     }
 
-    giveFood () {
-        this.food -= 4
+    giveFood (traveler,numOfFoodUnits) {
+        if (this.food >= numOfFoodUnits){
+            this.food -= numOfFoodUnits
+            traveler.food += numOfFoodUnits
+        }
     }
 
     eat () {
-        if (this.food <= 0) {
+        if (this.food <= 1) {
+            this.food -= 1
             return this.isHealthy = false
         }
-        this.food - 2
+        this.food -= 2
     }
 
 }
